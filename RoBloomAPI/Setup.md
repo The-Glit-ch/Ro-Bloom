@@ -5,6 +5,7 @@ Setting up the API is easy. All you need to do is import the two scripts into yo
 You then want to make sure the scripts are properly linked
 
 Ex:
+
 ![alt text](https://github.com/The-Glit-ch/Ro-Bloom/blob/main/RoBloomAPI/assets/image1.jpg?raw=true)
 
 ![alt text](https://github.com/The-Glit-ch/Ro-Bloom/blob/main/RoBloomAPI/assets/image2.jpg)
