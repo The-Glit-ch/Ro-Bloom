@@ -29,77 +29,53 @@ BaseURL = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/"
 ShowWarnings = true
 
 function RoBloomAPI:GetSymbol(DataTable,Select)
-
+	
 	RoBloomService:AutoAssert(DataTable,"table","DataTable")
 	RoBloomService:AutoAssert(Select,"number","Select")
-
+	
 	return DataTable["quotes"][Select]["symbol"]
 end
 
-function RoBloomAPI:AutoComplete(APIKey,Query,Region,AutoParse)
-	--APIKey: APIKey(Type:String)(Required)
-	--Query: The query to auto complete(Type:String)(Required)
-	--Region: The region to look at(Type:String)(Optional)
-		--One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG
-	--AutoParse: Should the JSON be auto parsed and return generic data(Type:Bool)(Optional)
-
-
+function RoBloomAPI:AutoComplete(APIKey,Query,Region)	
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Query,"string","Query")
-
+	
 	if ShowWarnings then
-		RoBloomService:AutoWarn(AutoParse,false,"AutoParse")
-		AutoParse = false
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
-		return RoBloomService:GetAndDecode(BaseURL.."/auto-complete?q="..Query.."&region="..Region,false,Headers)
+		return RoBloomService:GetAndDecode(BaseURL.."/auto-complete?q="..Query.."&region="..Region,false,Headers)	
 	end)
-
-	if AutoParse then
-		local GenericDataTable = {}
-		GenericDataTable["count"] = ReturnData["count"]
-		local i = 1
-		for key,value in pairs(ReturnData["quotes"]) do
-			GenericDataTable["Quote"..i] = ReturnData["quotes"][i]
-			i+=1
-		end
-		i=1
-		for key,value in pairs(ReturnData["news"]) do
-			GenericDataTable["News"..i] = ReturnData["news"][i]
-			i+=1
-		end
-		return PcallValue, GenericDataTable
-	end
-
+	
 	return PcallValue, ReturnData
 end
 
 --Stock
 function RoBloomAPI:GetSummary(APIKey,Symbol,Region)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-summary?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
@@ -107,20 +83,20 @@ function RoBloomAPI:GetSummary(APIKey,Symbol,Region)
 end
 
 function RoBloomAPI:GetRecommendations(APIKey,Symbol)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-recommendations?symbol="..Symbol,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
 end
 
@@ -128,24 +104,24 @@ function RoBloomAPI:GetUpgradesDownGrades(APIKey,Symbol,Region)
 
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-upgrades-downgrades?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
-
+	
 end
 
 function RoBloomAPI:GetChart(APIKey,Interval,Symbol,Range,Region)
@@ -154,133 +130,133 @@ function RoBloomAPI:GetChart(APIKey,Interval,Symbol,Range,Region)
 	RoBloomService:AutoAssert(Interval,"string","Interval")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
 	RoBloomService:AutoAssert(Range,"string","Range")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
-
+	
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-chart?interval="..Interval.."&symbol="..Symbol.."&range="..Range.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
-
+	
 end
 
 function RoBloomAPI:GetStatistics(APIKey,Symbol,Region)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
-
+	
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-statistics?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
 end
 
 function RoBloomAPI:GetHistoricalData(APIKey,Symbol,Region)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v3/get-historical-data?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
-
+	
 end
 
 function RoBloomAPI:GetProfile(APIKey,Symbol,Region)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-profile?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
 end
 
 function RoBloomAPI:GetFinancials(APIKey,Symbol,Region)
-
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-financials?symbol="..Symbol.."&region="..Region,false,Headers)
 	end)
-
+	
 	return PcallValue, ReturnData
 end
 
-function RoBloomAPI:GetTimeseries(APIKey,Symbol,Period2,Period1,Region)
-
+function RoBloomAPI:GetTimeseries(APIKey,Symbol,Period2,Period1,Region)	
+	
 	RoBloomService:AutoAssert(APIKey,"string","APIKey")
 	RoBloomService:AutoAssert(Symbol,"string","Symbol")
 	RoBloomService:AutoAssert(Period2,"table","Period2")
 	RoBloomService:AutoAssert(Period1,"table","Period1")
-
+	
 	if ShowWarnings then
 		RoBloomService:AutoWarn(Region,"US","Region")
 		Region = "US"
 	end
-
+	
 	local Period2Time = os.time({
 		year=Period2["year"],month=Period2["month"],day=Period2["day"],
 		hour=Period2["hour"],min=Period2["min"],sec=Period2["sec"]
@@ -289,13 +265,13 @@ function RoBloomAPI:GetTimeseries(APIKey,Symbol,Period2,Period1,Region)
 		year=Period1["year"],month=Period1["month"],day=Period1["day"],
 		hour=Period1["hour"],min=Period1["min"],sec=Period1["sec"]
 	})
-
+	
 	local Headers = {
 		["x-rapidapi-key"] = APIKey,
 		["x-rapidapi-host"] = "apidojo-yahoo-finance-v1.p.rapidapi.com",
 		["useQueryString"] = "true",
 	}
-
+	
 	local PcallValue, ReturnData = pcall(function()
 		return RoBloomService:GetAndDecode(BaseURL.."/stock/v2/get-timeseries?symbol="..Symbol.."&period2="..Period2Time.."&period1="..Period1Time.."&region="..Region,false,Headers)
 	end)
