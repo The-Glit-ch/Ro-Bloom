@@ -229,7 +229,7 @@ local Period1 = {
 	["sec"] = 45
 }
 
-local PcallValue, ReturnData = RB_API:GetTimeseries(APIKey,"RBLX",Period2,Period1,"US")
+local PcallValue, ReturnData = RoBloom_API:GetTimeseries(APIKey,"RBLX",Period2,Period1,"US")
 ```
 > returns PcallValue, DataTable
 ---
