@@ -190,3 +190,46 @@ local PcallValue, ReturnData = RoBloom_API:GetHistoricalData(APIKey,"RBLX","US")
 ```
 > returns PcallValue, DataTable
 ---
+## GetTimeseries:
+``:GetTimeseries(APIKey,Symbol,Period2,Period1,Region)``
+
+Returns a pcall value and data table
+
+**APIKey: (Type:String, Required)**
+
+**Symbol: (Type:String, Required)**
+
+**Period2 (Type:Table, Required)**
+
+**Period1 (Type:Table, Required)**
+
+**Region: (Type:String, Optional, Defaults to "US")**
+
+_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+
+Ex
+```lua
+--More info on time can be found [here](https://developer.roblox.com/en-us/api-reference/lua-docs/os)
+
+local Period2 = {
+	["year"] = 2020,
+	["month"] = 10,
+	["day"] = 8,
+	["hour"] = 19,
+	["min"] = 30,
+	["sec"] = 45
+}
+
+local Period1 = {
+	["year"] = 2019,
+	["month"] = 10,
+	["day"] = 8,
+	["hour"] = 19,
+	["min"] = 30,
+	["sec"] = 45
+}
+
+local PcallValue, ReturnData = RB_API:GetTimeseries(APIKey,"RBLX",Period2,Period1,"US")
+```
+> returns PcallValue, DataTable
+---
