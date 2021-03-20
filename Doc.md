@@ -124,7 +124,7 @@ local PcallValue, ReturnData = RoBloom_API:GetUpgradesDownGrades(APIKey,"RBLX","
 > returns PcallValue, DataTable
 ---
 ## GetChart:
-sadly dosent return a chart :( :cry:
+sadly dosent return a chart :cry:
 
 Returns a pcall value and a data table
 
