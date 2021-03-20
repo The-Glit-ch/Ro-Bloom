@@ -11,7 +11,7 @@ Should the script show warnings(Mostly used for debug)
 ## GetSymbol:
 
 ``:GetSymbol(DataTable,Select)``
-Returns the Symbol located at "x" of the return JSON
+Returns the symbol located at "x" of the return JSON
 
 **DataTable: Type:Table (Required)**
 
@@ -45,7 +45,7 @@ Returns a pcall value and a table that contains symbols and news about the given
 
 **Query: Type:String (Required)**
 
-**Region: Type:String (Optional, Defaults to "US")**
+**Region: Type:String (Optional, Defaults to "US")** (One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)
 
 Ex:
 ```lua
@@ -60,5 +60,23 @@ local PcallValue, ReturnData = RoBloom_API:AutoComplete(APIKey,"roblox","US")
 local Symbol = RoBloom_API:GetSymbol(ReturnData,1)
 ```
 > returns "RBLX"
+
+---
+## GetSummary:
+``:GetSummary(APIKey,Symbol,Region)``
+
+Returns a pcall value and a summary of the given symbol
+
+**APIKey: Type:String (Required)**
+
+**Symbol: Type:String (Required)**
+
+**Region: Type:String (Optional, Defaults to "US")** (One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)
+
+Ex:
+```lua
+local PcallValue, ReturnTable = RoBloom_API:GetSummary(APIKey,"RBLX","US")
+```
+> returns Table
 
 ---
