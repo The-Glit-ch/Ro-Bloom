@@ -52,7 +52,7 @@ Returns a pcall value and a table that contains symbols and news about the given
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex:
 ```lua
@@ -80,7 +80,7 @@ Returns a pcall value and a data table
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex:
 ```lua
@@ -115,7 +115,7 @@ Returns a pcall value and a data table
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex:
 ```lua
@@ -134,17 +134,17 @@ Returns a pcall value and a data table
 
 **Interval: (Type:String, Required)**
 
-_One of the following is allowed 1m|2m|5m|15m|60m|1d_
+_One of the following is allowed 1m,2m,5m,15m,60m,1d_
 
 **Symbol (Type:String, Required)**
 
 **Range (Type:String, Required)**
 
-_One of the following is allowed 1d|5d|1mo|3mo|6mo|1y|2y|5y|10y|ytd|max_
+_One of the following is allowed 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max_
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex
 ```lua
@@ -163,7 +163,7 @@ Returns a pcall value and a data table
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex:
 ```lua
@@ -182,7 +182,7 @@ Returns a pcall value and a data table
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex:
 ```lua
@@ -205,7 +205,7 @@ Returns a pcall value and data table
 
 **Region: (Type:String, Optional, Defaults to "US")**
 
-_(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
+_(One of the following is allowed: US,BR,AU,CA,FR,DE,HK,IN,IT,ES,GB,SG)_
 
 Ex
 ```lua
