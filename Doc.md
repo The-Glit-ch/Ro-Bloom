@@ -209,7 +209,7 @@ _(One of the following is allowed US|BR|AU|CA|FR|DE|HK|IN|IT|ES|GB|SG)_
 
 Ex
 ```lua
---More info on time can be found [here](https://developer.roblox.com/en-us/api-reference/lua-docs/os)
+--More info on time can be found here -> https://developer.roblox.com/en-us/api-reference/lua-docs/os
 
 local Period2 = {
 	["year"] = 2020,
